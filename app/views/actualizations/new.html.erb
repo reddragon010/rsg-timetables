@@ -1,0 +1,15 @@
+STEP 2
+
+<%= form_tag('create', :method => :post) do %>
+  <div class="field">
+    SessionID<br />
+    <%= text_field :esession, 'esession' %>
+  </div>
+  <div class="field">
+    Week<br />
+    <%= text_field :eweek, 'eweek' %>
+  </div>
+  <div class="actions">
+    <%= submit_tag('Submit') %>
+  </div>
+<% end %>

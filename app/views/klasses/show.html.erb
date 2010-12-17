@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Short:</b>
+  <%= @klass.short %>
+</p>
+
+<table id="timetable">
+	<thead>
+	<tr>
+		<th></th>
+		<th>Monday</th>
+		<th>Thuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+	</tr>	
+	</thead>
+	<tbody>
+		<% @tt_rows.each_with_index do |r,i| %>
+		<% next if i == 0 %>
+		<tr>
+			<td><%= i %></td>
+			<% r['days'].each do |day| %>
+			<td><%= day[0][:subject] unless day[0].nil? %><br/><%= day[0][:teachers] unless day[0].nil? %><br/><%= day[0][:rooms] unless day[0].nil? %><br/></td>
+			<% end %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to 'Edit', edit_klass_path(@klass) %> |
+<%= link_to 'Back', klasses_path %>

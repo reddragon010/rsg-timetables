@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  day: MyString
+  lession: 1
+  subject_id: 1
+  klass_id: 1
+
+two:
+  day: MyString
+  lession: 1
+  subject_id: 1
+  klass_id: 1
