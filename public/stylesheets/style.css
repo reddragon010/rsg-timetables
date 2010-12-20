@@ -1,0 +1,19 @@
+.tt_cell {
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	border: 1px solid #999;
+}
+
+#timetable {
+	
+}
+
+#timetable td {
+	text-align: center;
+	border: 1px solid #999;
+}
+
+#timetable .subject {
+	font-weight: bold;
+}

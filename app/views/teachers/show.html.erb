@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Short:</b>
-  <%= @teacher.short %>
-</p>
+<h1><%= @teacher.name %></h1>
+<h2><%= @teacher.short %></h2>
 
-<p>
-  <b>Name:</b>
-  <%= @teacher.name %>
-</p>
+<h3>Subjects</h3>
+<ul>
+	<% @teacher.subjects.each do |subject| %>
+	<li><%= subject.short %></li>
+	<% end %>
+</ul>
 
+<%= render :partial => "shared/timetable", :locals => {:tt_rows => @tt_rows} %>
 
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Back', teachers_path %>

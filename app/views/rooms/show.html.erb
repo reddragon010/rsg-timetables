@@ -1,15 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Short:</b>
-  <%= @room.short %>
-</p>
+<h1><%= @room.short %></h1>
+<h2><%= @room.name %></h2>
 
-<p>
-  <b>Name:</b>
-  <%= @room.name %>
-</p>
-
+<%= render :partial => "shared/timetable", :locals => {:tt_rows => @tt_rows} %>
 
 <%= link_to 'Edit', edit_room_path(@room) %> |
 <%= link_to 'Back', rooms_path %>

@@ -1,0 +1,31 @@
+<table id="timetable">
+	<thead>
+	<tr>
+		<th></th>
+		<th>Monday</th>
+		<th>Thuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+	</tr>	
+	</thead>
+	<tbody>
+		<% tt_rows.each_with_index do |r,i| %>
+		<% next if i == 0 %>
+		<tr class="tt_row">
+			<th><%= i %></th>
+			<% r['days'].each do |day| %>
+			<td class="tt_cell" style="background-color: <%= !day[0].nil? && !day[0][:subject].color.nil? ? day[0][:subject].color : "lightgrey" %>">
+				<% unless day[0].nil? %>
+				<span class="subject"><%= day[0][:subject].short %></span><br/>
+				<%= day[0][:klass] unless day[0][:klass].nil? %><br/>
+				<%= day[0][:teachers].join(", ") unless day[0][:teachers].nil? %><br/>
+				<%= day[0][:rooms].join(", ") unless day[0][:rooms].nil? %><br/>
+				<% end %>
+			</td>
+			<% end %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
