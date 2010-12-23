@@ -1,17 +1,16 @@
-<h1>Listing teachers</h1>
-
 <table>
-  <tr>
-    <th>Short</th>
-    <th>Name</th>
-    <th></th>
-  </tr>
-
-<% @teachers.each do |teacher| %>
-  <tr>
-    <td><%= link_to teacher.short, teacher %></td>
-    <td><%= teacher.name %></td>
-    <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
-  </tr>
-<% end %>
-</table>
+	<tr>
+		<% ('A'..'Z').to_a.each_with_index do |char,i| %>
+			<%= raw('<td style="vertical-align:top; width:60px; text-align:center;">') if i % 2 == 0 %> 
+				<span style="line-height:10px;"><b><%= char %></b></span>
+				<table>
+				<% @teachers.select{|t| t.short[0] == char}.each do |teacher| %>
+  				<tr>
+    				<td><%= link_to teacher.short, teacher %></td>
+  				</tr>
+				<% end %>
+				</table>
+			<%= raw('</td>') if i % 2 == 1 %> 
+		<% end %>
+	</tr>
+<table>

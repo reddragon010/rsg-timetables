@@ -7,8 +7,21 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+<div id="page">
+<div id="header">
+	<h2>RSG TimeTables</h2>
+	<div id="navcontainer">
+		<ul id="navlist">
+			<li><%= link_to "Teacher", teachers_path %></li>
+			<li><%= link_to "Class", klasses_path %></li>
+			<li><%= link_to "Room", rooms_path %></li>
+		</ul>
+	</div>
+</div>
+<div id="center">
 <%= yield %>
-
+</div>
+<div id="footer">
+</div>
 </body>
 </html>

@@ -22,7 +22,7 @@ class TeachersController < ApplicationController
       @tt_rows[i]["lession"] = i
       @tt_rows[i]["days"] = Array.new
       schooldays.each_with_index do |day,di|
-        @tt_rows[i]["days"] << entries.map{|e| {:subject => e.subject, :klass => e.klass.short, :rooms => e.rooms.map{|r| r.short}} if e.schoolday == day}.compact
+        @tt_rows[i]["days"] << entries.map{|e| {:subject => e.subject, :klass => e.klass, :rooms => e.rooms.map{|r| r.short}} if e.schoolday == day}.compact
       end
     end
     respond_to do |format|

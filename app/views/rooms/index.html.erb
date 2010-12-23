@@ -1,22 +1,16 @@
-<h1>Listing rooms</h1>
-
 <table>
-  <tr>
-    <th>Short</th>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @rooms.each do |room| %>
-  <tr>
-    <td><%= link_to room.short, room %></td>
-    <td><%= room.name %></td>
-    <td><%= link_to 'Edit', edit_room_path(room) %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Room', new_room_path %>
+	<tr>
+		<% ['L','R','*'].each_with_index do |roomcat,i| %>
+			<td style="vertical-align:top;width:60px;"> 
+				<span style="line-height:10px;"><b><%= roomcat %></b></span>
+				<table>
+				<% @rooms.select{|r| roomcat == '*' ? !(r.short[0] == 'L') && !(r.short[0] == 'R') : r.short[0] == roomcat}.each do |room| %>
+  				<tr>
+    				<td><%= link_to room.short, room %></td>
+  				</tr>
+				<% end %>
+				</table>
+			</td>
+		<% end %>
+	</tr>
+<table>

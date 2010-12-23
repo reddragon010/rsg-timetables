@@ -1,8 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @teacher.name %></h1>
-<h2><%= @teacher.short %></h2>
-
 <h3>Subjects</h3>
 <ul>
 	<% @teacher.subjects.each do |subject| %>
@@ -10,7 +7,4 @@
 	<% end %>
 </ul>
 
-<%= render :partial => "shared/timetable", :locals => {:tt_rows => @tt_rows} %>
-
-<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
-<%= link_to 'Back', teachers_path %>
+<%= render :partial => "shared/timetable", :locals => {:headline => @teacher.short,:tt_rows => @tt_rows} %>

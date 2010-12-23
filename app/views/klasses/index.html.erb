@@ -1,15 +1,16 @@
-<h1>Listing klasses</h1>
-
 <table>
-  <tr>
-    <th>Short</th>
-    <th></th>
-  </tr>
-
-<% @klasses.each do |klass| %>
-  <tr>
-    <td><%= link_to klass.short, klass %></td>
-    <td><%= link_to 'Edit', edit_klass_path(klass) %></td>
-  </tr>
-<% end %>
-</table>
+	<tr>
+		<% ('1'..'8').to_a.each_with_index do |level,i| %>
+			<td style="vertical-align:top;width:60px;"> 
+				<span style="line-height:10px;"><b><%= level %></b></span>
+				<table>
+				<% @klasses.select{|k| k.short[0] == level}.each do |klass| %>
+  				<tr>
+    				<td><%= link_to klass.short, klass %></td>
+  				</tr>
+				<% end %>
+				</table>
+			</td> 
+		<% end %>
+	</tr>
+<table>

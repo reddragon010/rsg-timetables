@@ -1,7 +1,8 @@
+<% hours = ["", "08:00 - 08:50", "08:50 - 09:40", "09:50 - 10:40", "10:40 - 11:30", "11:40 - 12:30", "12:30 - 13:20", "13:30 - 14:20", "14:20 - 15:10", "15:20 - 16:10", "16:10 - 17:00", "17:10 - 18:00", "18:00 - 18:45", "18:45 - 19:30", "19:40 - 20:25", "20:25 - 21:10", "21:20 - 22:05"] %>
 <table id="timetable">
 	<thead>
 	<tr>
-		<th></th>
+		<th style="background-color: lightblue;color: black"><b><%= headline %></b></th>
 		<th>Monday</th>
 		<th>Thuesday</th>
 		<th>Wednesday</th>
@@ -14,14 +15,14 @@
 		<% tt_rows.each_with_index do |r,i| %>
 		<% next if i == 0 %>
 		<tr class="tt_row">
-			<th><%= i %></th>
+			<th><%= i %><br /><%= hours[i] %></th>
 			<% r['days'].each do |day| %>
 			<td class="tt_cell" style="background-color: <%= !day[0].nil? && !day[0][:subject].color.nil? ? day[0][:subject].color : "lightgrey" %>">
 				<% unless day[0].nil? %>
-				<span class="subject"><%= day[0][:subject].short %></span><br/>
-				<%= day[0][:klass] unless day[0][:klass].nil? %><br/>
-				<%= day[0][:teachers].join(", ") unless day[0][:teachers].nil? %><br/>
-				<%= day[0][:rooms].join(", ") unless day[0][:rooms].nil? %><br/>
+				<div class="subject"><%= day[0][:subject].short %></div>
+				<div><%= raw( link_to(day[0][:klass].short, day[0][:klass])) unless day[0][:klass].nil? %></div>
+				<div><%= raw(day[0][:teachers].map{|t| link_to(t.short, teacher_path(t))}.join(", ")) unless day[0][:teachers].nil? %></div>
+				<div><%= day[0][:rooms].join(", ") unless day[0][:rooms].nil? %></div>
 				<% end %>
 			</td>
 			<% end %>
